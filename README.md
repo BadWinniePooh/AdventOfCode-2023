@@ -15,6 +15,7 @@ For example:
 pqr3stu8vwx -> 3 8
 a1b2c3d4e5f -> 1 5
 treb7uchet  -> 7
+53abc1      -> 5 1
 ```
 
 In this example, the calibration values of these four lines are 12, 38, 15, and 77. Adding these together produces 142.

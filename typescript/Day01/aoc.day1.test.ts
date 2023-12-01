@@ -17,7 +17,7 @@ it.each([
     , ['pqr3stu8vwx', 38]
     , ['a1b2c3d4e5f', 15]
     , ['treb7uchet', 77]
-    , ['53hvhgchljnlxqjsgrhxgf1zfoureightmlhvvv', 51]
+    , ['53abc1', 51]
 ])(`calibration value from %s should be %i`, (input: string, expected: number) => {
     var actual = getCalibrationFromString(input);
     expect(actual).toBe(expected);
