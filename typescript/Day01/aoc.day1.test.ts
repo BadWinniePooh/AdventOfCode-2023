@@ -1,13 +1,8 @@
-import { expect, it, test } from "bun:test";
+import {expect, it, test} from "bun:test";
 import * as fs from 'fs';
+import {Trebuchet} from "./trebuchet.ts";
 
-function getCalibrationFromString(input: string) {
-    var matches = input.match(/[0-9]/gm);
-    var firstDigit = matches ? matches[0] : 'error';
-    var lastDigit = matches ? matches[matches.length - 1] : 'error';
-    return parseInt(firstDigit + lastDigit);
-}
-
+const trebuchet = new Trebuchet();
 
 it.each([
     ['1abc2', 12]
@@ -19,17 +14,9 @@ it.each([
     , ['treb7uchet', 77]
     , ['53abc1', 51]
 ])(`calibration value from %s should be %i`, (input: string, expected: number) => {
-    var actual = getCalibrationFromString(input);
+    var actual = trebuchet.calibrate(input);
     expect(actual).toBe(expected);
 })
-
-function getSumFromCallibrations(input: string[]) {
-    var sum = 0;
-    input.forEach(element => {
-        sum += getCalibrationFromString(element)
-    });
-    return sum;
-}
 
 test('sum of calibration values should be 142', () => {
     var input = [
@@ -38,12 +25,12 @@ test('sum of calibration values should be 142', () => {
         , 'a1b2c3d4e5f'
         , 'treb7uchet'];
 
-    var actual = getSumFromCallibrations(input);
+    var actual = trebuchet.calibrationSum(input);
     expect(actual).toBe(142);
 });
 
-test('read from file', () => {
+test('Solution of Day01 Part 1', () => {
     var input = fs.readFileSync('typescript/Day01/testData.txt', 'utf8').split('\n');
-    var actual = getSumFromCallibrations(input);
+    var actual = trebuchet.calibrationSum(input);
     expect(actual).toBe(54561);
 });
