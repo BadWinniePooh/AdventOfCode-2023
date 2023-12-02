@@ -130,3 +130,9 @@ test('Sum of possible games should be 8', () => {
     var actual = game.getSumOfPossibleGames(input, limitation);
     expect(actual).toBe(8);
 });
+
+test('Get Solution of Day02', () => {
+    var input = fs.readFileSync('typescript/Day02/testData.txt', 'utf8');
+    var actual = game.getSumOfPossibleGames(input, limitation);
+    expect(actual).toBe(0);
+});
