@@ -76,8 +76,7 @@ export class Game {
 
     getPowerOfCubes(gameSets: string) {
         var limitation = this.getLimitation(gameSets);
-        var powerOfCubes = limitation.get('red')! * limitation.get('green')! * limitation.get('blue')!;
-        return powerOfCubes;
+        return limitation.get('red')! * limitation.get('green')! * limitation.get('blue')!;
     }
 
     getSumOfPowerOfCubes(data: string) {
