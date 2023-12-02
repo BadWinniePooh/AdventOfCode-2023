@@ -59,5 +59,6 @@ test('sum of text calibration values should be 281', () => {
 test('Solution of Day01 Part 1', () => {
     var input = fs.readFileSync('typescript/Day01/testData.txt', 'utf8').split('\n');
     var actual = trebuchet.calibrationSum(input);
+    // Uncomment to reveal answer
     //expect(actual).toBe(0);
 });

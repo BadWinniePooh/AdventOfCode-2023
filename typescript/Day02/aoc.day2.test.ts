@@ -11,6 +11,8 @@ const limitation = new Map<string, number>(
     ]
 );
 
+// Part One
+
 it.each([
     ['3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green', ['3 blue, 4 red', '1 red, 2 green, 6 blue', '2 green']],
     ['1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue', ['1 blue, 2 green', '3 green, 4 blue, 1 red', '1 green, 1 blue']],
@@ -74,13 +76,6 @@ test('Sum of possible games should be 8', () => {
     expect(actual).toBe(8);
 });
 
-test('Get Solution of Day02', () => {
-    var input = fs.readFileSync('typescript/Day02/testData.txt', 'utf8');
-    var partOne = game.getSumOfPossibleGames(input, limitation);
-    var partTwo = game.getSumOfPowerOfCubes(input);
-    expect(partTwo).toBe(0);
-});
-
 // Part Two
 
 it.each([
@@ -117,4 +112,15 @@ test('Sum of power of all cubes should be 2286', () => {
 
     var actual = game.getSumOfPowerOfCubes(input);
     expect(actual).toBe(2286);
+});
+
+// Solution Test is intentionally failing and thus commented out
+
+test('Get Solution of Day02', () => {
+    var input = fs.readFileSync('typescript/Day02/testData.txt', 'utf8');
+    var partOne = game.getSumOfPossibleGames(input, limitation);
+    var partTwo = game.getSumOfPowerOfCubes(input);
+    // Uncomment to reveal answer
+    //expect(partOne).toBe(0);
+    //expect(partTwo).toBe(0);
 });
