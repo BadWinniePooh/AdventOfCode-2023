@@ -54,4 +54,23 @@ export class Game {
     getGame(input: string) {
         return input.split(':')[1].trim();
     }
+
+    getLimitation(input: string) {
+        var limitation = new Map<string, number>(
+            [
+                ['red', 0],
+                ['green', 0],
+                ['blue', 0]
+            ]
+        );
+        this.getSetsOfCubes(input).forEach((set) => {
+            var cubes = this.getNumberOfCubesInSet(set);
+            cubes.forEach((value, key) => {
+                if(limitation.get(key)! < value){
+                    limitation.set(key, value);
+                }
+            });
+        });
+        return limitation;
+    }
 }
