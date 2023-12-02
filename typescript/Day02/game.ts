@@ -55,7 +55,7 @@ export class Game {
         return input.split(':')[1].trim();
     }
 
-    getLimitation(input: string) {
+    getLimitation(gameSets: string) {
         var limitation = new Map<string, number>(
             [
                 ['red', 0],
@@ -63,7 +63,7 @@ export class Game {
                 ['blue', 0]
             ]
         );
-        this.getSetsOfCubes(input).forEach((set) => {
+        this.getSetsOfCubes(gameSets).forEach((set) => {
             var cubes = this.getNumberOfCubesInSet(set);
             cubes.forEach((value, key) => {
                 if(limitation.get(key)! < value){
@@ -72,5 +72,22 @@ export class Game {
             });
         });
         return limitation;
+    }
+
+    getPowerOfCubes(gameSets: string) {
+        var limitation = this.getLimitation(gameSets);
+        var powerOfCubes = limitation.get('red')! * limitation.get('green')! * limitation.get('blue')!;
+        return powerOfCubes;
+    }
+
+    getSumOfPowerOfCubes(data: string) {
+        var games = data.split('\n');
+        var gameSets = games.map((game) => this.getGame(game));
+        var sumOfPowerOfCubes = 0;
+        gameSets.forEach((gameSet) => {
+            var powerOfCubes = this.getPowerOfCubes(gameSet);
+            sumOfPowerOfCubes += powerOfCubes;
+        });
+        return sumOfPowerOfCubes;
     }
 }
